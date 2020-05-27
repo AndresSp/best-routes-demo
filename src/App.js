@@ -8,6 +8,11 @@ import { GoogleMapsProvider } from './components/GoogleMapsProvider';
 function App() {
   return (
     <GoogleMapsProvider>
+      <div style={{ float: 'left' , width: '40%', height: '100vh' }}>
+        <div style={{backgroundColor: 'green', height: '100%'}}>
+
+        </div>
+      </div>
       <MapContainer />
     </GoogleMapsProvider>
   );

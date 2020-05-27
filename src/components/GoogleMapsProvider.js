@@ -8,15 +8,7 @@ export class GoogleMapsProvider extends Component {
         super(props);
         this.state = { google: null, loading: false, error: null };
     }
-    // fetch = async () => {
-    //   this.setState({ loading: true });
-    //   try {
-    //     const data = await fetch('/categories');
-    //     this.setState({ data, loading: false })
-    //   } catch (error) {
-    //     this.setState({ error, loading: false })
-    //   } 
-    // };
+
 
     load = async () => {
         if (this.state.loading) return;
@@ -25,7 +17,7 @@ export class GoogleMapsProvider extends Component {
 
         // Create the script tag, set the appropriate attributes
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_APIKEY}&callback=initMap`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_APIKEY}&language=en&region=US&callback=initMap&`;
         script.defer = true;
         script.async = true;
 
@@ -47,8 +39,6 @@ export class GoogleMapsProvider extends Component {
     }
 
     render() {
-        const { children } = this.props;
-
         if(!this.state.google){
             return <div>Google API Loading ...</div>
         }

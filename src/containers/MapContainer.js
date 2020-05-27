@@ -3,9 +3,10 @@ import { Map, GoogleApiWrapper } from 'google-maps-react';
 import { GoogleMapsConsumer } from '../components/GoogleMapsProvider';
 
 const mapStyles = {
-  width: '100%',
+  width: '60%',
   height: '100%',
-  position: 'relative'
+  position: 'relative',
+  float: 'right'
 };
 
 export class MapContainer extends Component {
@@ -18,7 +19,7 @@ export class MapContainer extends Component {
                         return (
                             <Map 
                             google={context.google}
-                            zoom={4.87}
+                            zoom={4.5}
                             initialCenter={{ lat:37.849, lng: -95.87}}
                             style={mapStyles}>
                             </Map>
@@ -32,9 +33,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: process.env.REACT_APP_GOOGLE_MAPS_APIKEY,
-    url: 'https://maps.googleapis.com/maps/api/js',
-    version: '3.41.1',
-    language: 'en',
-    region: 'US'
+    apiKey: process.env.REACT_APP_GOOGLE_MAPS_APIKEY
 })(MapContainer);
