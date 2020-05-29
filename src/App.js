@@ -2,19 +2,24 @@
 import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import { MapContainer } from './containers/MapContainer';
-import { GoogleMapsProvider } from './components/GoogleMapsProvider';
+import GoogleMap from './containers/GoogleMap';
+import FormContainer from './containers/FormContainer';
 
 function App() {
   return (
-    <GoogleMapsProvider>
-      <div style={{ float: 'left' , width: '40%', height: '100vh' }}>
-        <div style={{backgroundColor: 'green', height: '100%'}}>
-
-        </div>
+      <div style={{
+        display: 'flex', 
+        flexDirection: 'row', 
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+      <FormContainer/>
+      <GoogleMap options={{
+        center: {lat: 39, lng: -95},
+        zoom: 5,
+        mapTypeId: 'roadmap',
+      }}/>
       </div>
-      <MapContainer />
-    </GoogleMapsProvider>
   );
 }
 
