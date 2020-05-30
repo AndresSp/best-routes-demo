@@ -7,6 +7,13 @@ body, html {
   background-color: #374d7c;
 }
 
+#mainContainer {
+  display: flex; 
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 #map {
   position: relative;
   width: 60%;

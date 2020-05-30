@@ -2,6 +2,7 @@ import Autocomplete from 'react-google-autocomplete';
 import { Button, Checkbox, Form } from 'semantic-ui-react'
 
 import React from 'react';
+import AutocompleteInput from '../components/AutocompleteInput';
 
 export default class FormContainer extends React.Component {
     ACRef = null
@@ -30,7 +31,8 @@ export default class FormContainer extends React.Component {
                     <Form style={this.styleForm} inverted>
                         <Form.Field>
                             <label>Search Address</label>
-                            <input placeholder='Address...' />
+                            <AutocompleteInput/>
+                            {/* <input placeholder='Address...' /> */}
                         </Form.Field>
                         <Form.Field style={{marginTop: '50px'}}>
                             <input placeholder='Address 1' disabled value='Address 1' />
