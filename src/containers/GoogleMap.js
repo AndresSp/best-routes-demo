@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class GoogleMap extends React.Component {
+class GoogleMap extends React.Component {
 
   componentDidMount() {
     this.map = new window.google.maps.Map(document.getElementById('map'), {
@@ -14,3 +14,5 @@ export default class GoogleMap extends React.Component {
     );
   }
 }
+
+export default GoogleMap

@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { observer, inject } from 'mobx-react'
 
   let autoComplete;
 
   function handleScriptLoad(updateQuery, autoCompleteRef) {
-    console.log(updateQuery, autoCompleteRef)
     autoComplete = new window.google.maps.places.Autocomplete(
       autoCompleteRef.current, 
-      { types: ["(cities)"], componentRestrictions: { country: "us" } }
+      { types: [], componentRestrictions: { country: "us" } }
     );
-    //autoComplete.setFields(["address_components", "formatted_address"]);
+    autoComplete.setFields(["geometry", "formatted_address"]);
     autoComplete.addListener("place_changed", () =>
       handlePlaceSelect(updateQuery)
     );
@@ -16,27 +16,30 @@ import React, { useState, useEffect, useRef } from 'react';
   
   async function handlePlaceSelect(updateQuery) {
     const addressObject = autoComplete.getPlace();
-    const query = addressObject.formatted_address;
+    const query = {
+      id: +addressObject.geometry.location.lat() + +addressObject.geometry.location.lng(),
+      formatted_address: addressObject.formatted_address, 
+      lat: addressObject.geometry.location.lat(),
+      lng: addressObject.geometry.location.lng()
+    };
     updateQuery(query);
-    console.log(addressObject);
+    //console.log(query);
   }
 
-  function AutocompleteInput() {
+  function AutocompleteInput({addressStore}) {
       const [query, setQuery] = useState("");
       const autoCompleteRef = useRef(null);
 
-    useEffect(() => handleScriptLoad(setQuery, autoCompleteRef), []);
+    useEffect(() => handleScriptLoad(addressStore.add, autoCompleteRef), [addressStore]);
 
     return (
       <input
         ref={autoCompleteRef}
-        autoComplete="no"
-        type="text"
+        type="search"
         onChange={event => setQuery(event.target.value)}
-        placeholder="Enter a City"
-        value={query}
+        placeholder="Enter an address"
       />
     );
   }
 
-export default AutocompleteInput
+export default inject(({ addressStore }) => ({ addressStore }))(AutocompleteInput);
