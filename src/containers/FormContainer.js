@@ -1,4 +1,4 @@
-import { Form, Icon, Button } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 import React from 'react';
 import AutocompleteInput from '../components/AutocompleteInput';
 import { inject, observer } from 'mobx-react';
@@ -37,10 +37,6 @@ import { inject, observer } from 'mobx-react';
                         fluid
                         content={address.formatted_address} 
                         inverted/>
-                        {/* <input disabled value={address.formatted_address} />
-                        <Button inverted icon>
-                            <Icon name='times' />
-                        </Button> */}
                     </Form.Field>
                     
                 ))}

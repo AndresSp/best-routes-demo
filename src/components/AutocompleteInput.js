@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { observer, inject } from 'mobx-react'
+import { inject } from 'mobx-react'
 
   let autoComplete;
 
@@ -20,14 +20,15 @@ import { observer, inject } from 'mobx-react'
       id: +addressObject.geometry.location.lat() + +addressObject.geometry.location.lng(),
       formatted_address: addressObject.formatted_address, 
       lat: addressObject.geometry.location.lat(),
-      lng: addressObject.geometry.location.lng()
+      lng: addressObject.geometry.location.lng(),
+      location: addressObject.geometry.location
     };
     updateQuery(query);
     //console.log(query);
   }
 
   function AutocompleteInput({addressStore}) {
-      const [query, setQuery] = useState("");
+      const [,setQuery] = useState("");
       const autoCompleteRef = useRef(null);
 
     useEffect(() => handleScriptLoad(addressStore.add, autoCompleteRef), [addressStore]);

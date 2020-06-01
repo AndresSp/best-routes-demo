@@ -16,7 +16,8 @@ class addressStore {
 
 decorate(addressStore, {
   addresses: observable,
-  add: action
+  add: action,
+  remove: action
 })
 
 export default addressStore
