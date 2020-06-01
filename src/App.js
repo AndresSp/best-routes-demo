@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import GoogleMap from './containers/GoogleMap';
+import FormContainer from './containers/FormContainer';
+import ReactDependentScript from 'react-dependent-script';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id='mainContainer'>
+      <ReactDependentScript 
+      loadingComponent={
+          <div>Google Maps loading...</div>
+        }
+      scripts={[`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_APIKEY}&v=3&libraries=places&language=en&region=US`]}
+      >
+        <FormContainer/>
+        
+          <GoogleMap options={{
+            center: {lat: 39, lng: -95},
+            //center: {lat: 8.64, lng: -80.98},
+            zoom: 5,
+            mapTypeId: 'roadmap',
+          }}/>
+      </ReactDependentScript>
     </div>
   );
 }
