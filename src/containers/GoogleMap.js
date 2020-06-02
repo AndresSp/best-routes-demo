@@ -19,8 +19,8 @@ class GoogleMap extends React.Component {
   }
 
   componentDidMount() {
-    this.directionsService = new window.google.maps.DirectionsService;
-    this.directionsRenderer = new window.google.maps.DirectionsRenderer;
+    this.directionsService = new window.google.maps.DirectionsService();
+    this.directionsRenderer = new window.google.maps.DirectionsRenderer();
     this.map = new window.google.maps.Map(document.getElementById('map'), {
       ...this.props.options
     });
