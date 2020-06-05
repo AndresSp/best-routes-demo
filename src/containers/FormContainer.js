@@ -1,13 +1,22 @@
-import { Form, Button } from 'semantic-ui-react'
+import { List, Form, Ref } from 'semantic-ui-react'
 import React from 'react';
-import AutocompleteInput from '../components/AutocompleteInput';
+import AutocompleteInput from './AutocompleteInput';
 import { inject, observer } from 'mobx-react';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import AddressItem from '../components/AddressItem';
 
-    const FormContainer = ({ addressStore }) => {
+    // const getItems = count =>
+    // Array.from({ length: count }, (v, k) => k).map(k => ({
+    //     id: `item-${k}`,
+    //     content: `item ${k}`
+    // }));
+
+    //({ addressStore })
         const styleFormContainer = {
             float: 'left',
             width: '40%',
-            height: '100%',
+            height: '100vh',
+            overflow: 'auto',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -16,34 +25,74 @@ import { inject, observer } from 'mobx-react';
     
         const styleForm = {
             marginTop: '50px',
-            width: '90%'
+            width: '90%',
         }
 
+        const droppableStyleForm = (isDraggingOver) =>  ({
+            marginTop: '50px',
+            width: '90%',
+            //background: isDraggingOver ? "lightblue" : "transparent",
+            padding: '8px 0'
+        })
+
+        const reorder = (list, startIndex, endIndex) => {
+            const result = Array.from(list);
+            const [removed] = result.splice(startIndex, 1);
+            result.splice(endIndex, 0, removed);
+          
+            return result;
+          };
+
+class FormContainer extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            addresses: this.props.addressStore.addresses
+        };
+        //this.onDragEnd = this.onDragEnd.bind(this);
+    }
+    
+    onDragEnd = (result) => {
+        const { addressStore } = this.props
+        // dropped outside the list
+        if (!result.destination) {
+          return;
+        }
+    
+        addressStore.reorder(
+            addressStore.addresses,
+            result.source.index,
+            result.destination.index)
+      }
+
+    render() {
         return (
-        <div style={styleFormContainer}>
-            <Form style={styleForm} inverted>
-                <Form.Field>
-                    <label>Search Address</label>
-                    <AutocompleteInput/>
-                </Form.Field>
-            </Form>
-            <Form style={styleForm} inverted>
-                {addressStore.addresses.map((address, index) => (
-                    <Form.Field key={address.id}>
-                        <Button 
-                        onClick={() => addressStore.remove(index)}
-                        labelPosition='right' 
-                        icon='times'
-                        fluid
-                        content={address.formatted_address} 
-                        inverted/>
+            <DragDropContext onDragEnd={this.onDragEnd}>
+            <div style={styleFormContainer}>
+                <Form style={styleForm} inverted>
+                    <Form.Field>
+                        <label>Search Address</label>
+                        <AutocompleteInput/>
                     </Form.Field>
-                    
-                ))}
-            </Form>
-        </div>
+                </Form>
+                    <Droppable droppableId="droppable">
+                        {(provided, snapshot) => (
+                            <Ref innerRef={provided.innerRef}>
+                                <List divided verticalAlign='middle'
+                                {...provided.droppableProps}
+                                style={droppableStyleForm(snapshot.isDraggingOver)} inverted>
+                                    <AddressItem provided={provided} snapshot={snapshot} />
+                                    {provided.placeholder}
+                                </List>
+                            </Ref>
+                        )}
+                    </Droppable>
+            </div>
+        </DragDropContext>
         )
     }
+}
 
 
 export default inject(({ addressStore }) => ({ addressStore }))(observer(FormContainer))

@@ -5,14 +5,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import addressStore from './stores/addressStore';
-// import 'mobx-react-lite/batchingForReactDom';
+import 'mobx-react-lite/batchingForReactDom';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider addressStore={new addressStore()}>
-      <App/>
-    </Provider>
-  </React.StrictMode>,
+  <Provider addressStore={new addressStore()}>
+    <App/>
+  </Provider>,
   document.getElementById('root')
 );
       

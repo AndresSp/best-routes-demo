@@ -9,6 +9,14 @@ class addressStore {
     }
   }
 
+  reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+  
+    this.addresses = result
+  }
+
   remove = (index) => {
     this.addresses.splice(index, 1)
   }
@@ -17,6 +25,7 @@ class addressStore {
 decorate(addressStore, {
   addresses: observable,
   add: action,
+  reorder: action,
   remove: action
 })
 
