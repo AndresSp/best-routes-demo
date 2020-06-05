@@ -1,6 +1,6 @@
 import { Form, Button } from 'semantic-ui-react'
 import React from 'react';
-import AutocompleteInput from '../components/AutocompleteInput';
+import AutocompleteInput from './AutocompleteInput';
 import { inject, observer } from 'mobx-react';
 
     const FormContainer = ({ addressStore }) => {
