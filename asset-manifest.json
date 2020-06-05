@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/best-routes-demo/static/css/main.788146c5.chunk.css",
-    "main.js": "/best-routes-demo/static/js/main.43813974.chunk.js",
-    "main.js.map": "/best-routes-demo/static/js/main.43813974.chunk.js.map",
+    "main.js": "/best-routes-demo/static/js/main.a8759b9e.chunk.js",
+    "main.js.map": "/best-routes-demo/static/js/main.a8759b9e.chunk.js.map",
     "runtime-main.js": "/best-routes-demo/static/js/runtime-main.ec7a12d8.js",
     "runtime-main.js.map": "/best-routes-demo/static/js/runtime-main.ec7a12d8.js.map",
-    "static/js/2.73c8319a.chunk.js": "/best-routes-demo/static/js/2.73c8319a.chunk.js",
-    "static/js/2.73c8319a.chunk.js.map": "/best-routes-demo/static/js/2.73c8319a.chunk.js.map",
+    "static/js/2.db466192.chunk.js": "/best-routes-demo/static/js/2.db466192.chunk.js",
+    "static/js/2.db466192.chunk.js.map": "/best-routes-demo/static/js/2.db466192.chunk.js.map",
     "index.html": "/best-routes-demo/index.html",
-    "precache-manifest.f1c41b5417e24cef180c8614c5ae9d25.js": "/best-routes-demo/precache-manifest.f1c41b5417e24cef180c8614c5ae9d25.js",
+    "precache-manifest.e44628b5d4204cb1edc7cc9e538c3243.js": "/best-routes-demo/precache-manifest.e44628b5d4204cb1edc7cc9e538c3243.js",
     "service-worker.js": "/best-routes-demo/service-worker.js",
     "static/css/main.788146c5.chunk.css.map": "/best-routes-demo/static/css/main.788146c5.chunk.css.map",
-    "static/js/2.73c8319a.chunk.js.LICENSE.txt": "/best-routes-demo/static/js/2.73c8319a.chunk.js.LICENSE.txt"
+    "static/js/2.db466192.chunk.js.LICENSE.txt": "/best-routes-demo/static/js/2.db466192.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ec7a12d8.js",
-    "static/js/2.73c8319a.chunk.js",
+    "static/js/2.db466192.chunk.js",
     "static/css/main.788146c5.chunk.css",
-    "static/js/main.43813974.chunk.js"
+    "static/js/main.a8759b9e.chunk.js"
   ]
 }

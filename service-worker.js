@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/best-routes-demo/precache-manifest.f1c41b5417e24cef180c8614c5ae9d25.js"
+  "/best-routes-demo/precache-manifest.e44628b5d4204cb1edc7cc9e538c3243.js"
 );
 
 self.addEventListener('message', (event) => {
