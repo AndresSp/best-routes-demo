@@ -27,6 +27,11 @@ import AddressItem from '../components/AddressItem';
             marginTop: '50px',
             width: '90%',
         }
+        const droppableContainer = {
+            height: '700px',
+            overflow: 'auto',
+            marginBottom: '20px'
+        }
 
         const droppableStyleForm = (isDraggingOver) =>  ({
             marginTop: '50px',
@@ -68,7 +73,7 @@ class FormContainer extends React.Component {
                         <AutocompleteInput/>
                     </Form.Field>
                 </Form>
-                    <Droppable droppableId="droppable">
+                    <Droppable droppableId="droppable"  style={droppableContainer}>
                         {(provided, snapshot) => (
                             <Ref innerRef={provided.innerRef}>
                                 <List divided verticalAlign='middle'
